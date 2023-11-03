@@ -150,7 +150,8 @@ nav .menu{
     <div class="btns">
       <button>Learn More</button>
       <button>Subscribe</button> 
-      <button>Submit</button>
+      <button>Submit</button> 
+      <button>Join</button>
     </div>
   </div>
 </body>
