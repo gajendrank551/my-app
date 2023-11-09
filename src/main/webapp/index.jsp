@@ -151,7 +151,7 @@ nav .menu{
       <button>Learn More</button>
       <button>Subscribe</button> 
       <button>Submit</button> 
-      <button>join</button> 
+      <button>Gone</button> 
     </div>
   </div>
 </body>
