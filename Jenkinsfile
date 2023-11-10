@@ -3,7 +3,7 @@ pipeline {
         label 'app'
     } 
 
-    trigger{ 
+    triggers{ 
         pollSCM '* * * * *'
     }
 
