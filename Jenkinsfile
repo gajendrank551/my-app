@@ -18,9 +18,11 @@ pipeline {
                 sh 'mvn package'
             }
         } 
-        stage('Deploy') {
+        stage('Docker') {
             steps {
-                sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.82/webapps'
+                script{
+                    sh 'docker build -t DD . '
+                }
             }
         }
     }
