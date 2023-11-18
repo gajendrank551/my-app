@@ -19,7 +19,7 @@ pipeline {
         stage('Docker') {
             steps {
                 script{
-                    sh 'docker build -t DD . '
+                    sh 'docker build -t my-test . '
                 }
             }
         }
