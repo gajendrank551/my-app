@@ -26,7 +26,7 @@ pipeline {
         stage('Push to DockerHub') {
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'D11', variable: 'Dockerpwd')]) { 
+                    withCredentials([string(credentialsId: 'DD', variable: 'Dockerpwd')]) { 
                         sh 'docker login -u dilip112 -p ${Dockerpwd}' 
                         sh 'docker push my-test'
                 } 
