@@ -19,7 +19,7 @@ pipeline {
         stage('Docker') {
             steps {
                 script{
-                    sh 'docker build -t my-test . '
+                    sh 'docker build -t my . '
                 }
             }
         } 
@@ -28,8 +28,8 @@ pipeline {
                 script{
                     withCredentials([string(credentialsId: 'DD', variable: 'Dockerpwd')]) { 
                         sh 'docker login -u dilip112 -p ${Dockerpwd}' 
-                        sh 'docker push pro/my-test'
-                } 
+                }  
+                sh 'docker push my'
             }
             }
         }
