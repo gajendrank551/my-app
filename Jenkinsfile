@@ -22,6 +22,16 @@ pipeline {
                     sh 'docker build -t my-test . '
                 }
             }
+        } 
+        stage('Push to DockerHub') {
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'D11', variable: 'Dockerpwd')]) { 
+                        sh 'docker login -u dilip112 -p ${Dockerpwd}' 
+                        sh 'docker push my-test'
+                } 
+            }
+            }
         }
     }
 }
