@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'app'
+    } 
 
     triggers{ 
         pollSCM '* * * * *'
@@ -16,21 +18,9 @@ pipeline {
                 sh 'mvn package'
             }
         } 
-        stage('Docker') {
+        stage('Deploy') {
             steps {
-                script{
-                    sh 'docker build -t my . '
-                }
-            }
-        } 
-        stage('Push to DockerHub') {
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'DD', variable: 'Dockerpwd')]) { 
-                        sh 'docker login -u dilip112 -p ${Dockerpwd}' 
-                }  
-                sh 'docker push my'
-            }
+                sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.82/webapps'
             }
         }
     }
