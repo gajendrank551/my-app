@@ -16,7 +16,7 @@ pipeline {
                 sh 'mvn package'
             }
         } 
-        stage('Deploy') {
+        stage('Docker build') {
             steps {
                 sh 'docker build -t m1 .'
             }
