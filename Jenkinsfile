@@ -18,7 +18,7 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.82/webapps'
+                sh 'docker build -t m1 .'
             }
         }
     }
