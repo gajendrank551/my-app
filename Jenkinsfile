@@ -3,6 +3,9 @@ pipeline {
 
     triggers{ 
         pollSCM '* * * * *'
+    } 
+    environment {
+        MY = 'DILIP'
     }
 
     stages {
@@ -18,7 +21,7 @@ pipeline {
         } 
         stage('Docker build') {
             steps {
-                sh 'docker build -t m1 .'
+                sh 'echo Hii ${MY}'
             }
         }
     }
