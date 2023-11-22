@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers{ 
-        pollSCM '* * * * *'
-    } 
-
     parameters {
         choice choices: ['172.17.0.3', '172.17.0.4'], description: 'IP', name: 'Demo'
     }
