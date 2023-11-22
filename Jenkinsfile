@@ -1,14 +1,12 @@
 pipeline {
-    agent {
-        label 'app' //should add node label name is "app" IP = 172.17.0.2
-    } 
+    agent any
 
     triggers{ 
         pollSCM '* * * * *'
     } 
 
     parameters {
-        choice choices: ['172.17.0.3', '172.17.0.4'], description: 'IP', name: 'DD'
+        choice choices: ['172.17.0.3', '172.17.0.4'], description: 'IP', name: 'Demo'
     }
 
 
@@ -25,7 +23,7 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp target/app.war dilip@ ${params.DD}:/home/Dk/apache-tomcat-9.0.83/webapps'
+                sh 'scp target/app.war dilip@${params.Demo}:/home/Dk/apache-tomcat-9.0.83/webapps'
             }
         } 
         stage('Build-Docker') {
