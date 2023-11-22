@@ -7,10 +7,8 @@ pipeline {
         pollSCM '* * * * *'
     } 
 
-    environment {
         //MY_PATH = "/target/app.war" 
         //MY_CONTAINER = "/home/Dk/apache-tomcat-9.0.83/webapps"
-    } 
 
     parameters {
         choice(choices: ["172.17.0.3", "172.17.0.4"], description:"Deploying a app.war", name:"Deploy")
