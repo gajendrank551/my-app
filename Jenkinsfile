@@ -1,14 +1,40 @@
 pipeline {
-    agent any 
-    
+    agent {
+        label 'app' //should add node label name is "app" IP = 172.17.0.2
+    } 
+
+    triggers{ 
+        pollSCM '* * * * *'
+    } 
+
     environment {
-        MY_NAME = "Dilip"
+        MY_PATH = "/target/app.war" 
+        MY_CONTAINER = "/home/Dk/apache-tomcat-9.0.83/webapps"
+    } 
+
+    parameters {
+        choice(choices: ["172.17.0.3", "172.17.0.4"], description:"Deploying a app.war", name:"Deploy")
     }
 
     stages {
-        stage('Hello') {
+        stage('Clone') {
             steps {
-                echo "Hiii ${MY_NAME}"
+                git branch: 'main', url: 'https://github.com/08dilipkumar/my-app.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        } 
+        stage('Deploy') {
+            steps {
+                sh 'scp ${MY_PATH}dilip@${params.Deploy}:${MY_CONTAINER}'
+            }
+        } 
+        stage('Build-Docker') {
+            steps {
+                sh 'docker build -t myapp .'
             }
         }
     }
