@@ -10,9 +10,7 @@ pipeline {
         //MY_PATH = "/target/app.war" 
         //MY_CONTAINER = "/home/Dk/apache-tomcat-9.0.83/webapps"
 
-    parameters {
-        choice(choices: ["172.17.0.3", "172.17.0.4"], description:"Deploying a app.war", name:"Deploy")
-    }
+        //choice(choices: ["172.17.0.3", "172.17.0.4"], description:"Deploying a app.war", name:"Deploy")
 
     stages {
         stage('Clone') {
@@ -27,7 +25,7 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp target/app.war dilip@${params.Deploy}:/home/Dk/apache-tomcat-9.0.83/webapps'
+                sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.83/webapps'
             }
         } 
         stage('Build-Docker') {
