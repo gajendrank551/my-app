@@ -8,8 +8,8 @@ pipeline {
     } 
 
     environment {
-        MY_PATH = "/target/app.war" 
-        MY_CONTAINER = "/home/Dk/apache-tomcat-9.0.83/webapps"
+        //MY_PATH = "/target/app.war" 
+        //MY_CONTAINER = "/home/Dk/apache-tomcat-9.0.83/webapps"
     } 
 
     parameters {
@@ -29,7 +29,7 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp ${MY_PATH}dilip@${params.Deploy}:${MY_CONTAINER}'
+                sh 'scp target/app.war dilip@${params.Deploy}:/home/Dk/apache-tomcat-9.0.83/webapps'
             }
         } 
         stage('Build-Docker') {
