@@ -21,12 +21,12 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp /home/Dk/workspace/my-pipeline/target/app.war dilip@${params.MY_IP}:/home/Dk/apache-tomcat-9.0.83/webapps'
+                sh 'scp target/app.war dilip@${MY_IP}:/home/Dk/apache-tomcat-9.0.83/webapps'
             }
         } 
         //stage('Build-Docker') {
             //steps {
                 //sh 'docker build -t myapp .'
             //}
-        }
     }
+}
