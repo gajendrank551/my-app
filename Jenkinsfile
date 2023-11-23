@@ -1,12 +1,7 @@
 pipeline {
     agent any
 
-    parameters {
-        choice choices: ['172.17.0.3', '172.17.0.4'], description: 'IP', name: 'Demo'
-    }
-
-
-    stages {
+     stages {
         stage('Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/08dilipkumar/my-app.git'
@@ -19,7 +14,7 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'scp target/app.war dilip@${params.Demo}:/home/Dk/apache-tomcat-9.0.83/webapps'
+                sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.83/webapps'
             }
         } 
         stage('Build-Docker') {
