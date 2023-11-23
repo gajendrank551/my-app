@@ -3,11 +3,6 @@ pipeline {
         label 'app' 
     } 
 
-    parameters {
-        choice (choices: ['172.17.0.3 ', '172.17.0.4'], name: 'MY_IP')
-    }
-
-
      stages {
         stage('Clone') {
             steps {
@@ -20,8 +15,17 @@ pipeline {
             }
         } 
         stage('Deploy') {
-            steps {
-                sh 'scp target/app.war dilip@${MY_IP}:/home/Dk/apache-tomcat-9.0.83/webapps'
+            steps { 
+                script {
+                    def ip = '172.17.0.3' 
+                    if(ip == '172.17.0.3'){
+                        sh 'scp target/app.war dilip@172.17.0.3:/home/Dk/apache-tomcat-9.0.83/webapps'
+                    } 
+                    else {
+                        sh 'scp target/app.war dilip@172.17.0.4:/home/Dk/apache-tomcat-9.0.83/webapps'
+                    }
+                }
+                
             }
         } 
         //stage('Build-Docker') {
