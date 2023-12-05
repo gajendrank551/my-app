@@ -23,10 +23,16 @@ pipeline {
                 sh 'mvn sonar:sonar'
             }
         }   
-         stage('BUILD') {
+        stage('BUILD') {
             steps {
                 sh 'mvn package'
             }
-        }  
+        }   
+        stage('PUBLiSH-ARIFACTS'){
+            steps {
+                sh 'mvn deploy'
+            }
+        } 
+
     }
 }
