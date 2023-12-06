@@ -30,17 +30,15 @@
   </dependencies> 
  
  <distributionManagement> 
-   <repository> 
-     <id>nexus</id> 
-     <name>app-nexus</name> 
-     <url>http://localhost:8082/repository/app-release/</url>
-   </repository> 
 
+   
   <snapshotRepository> 
    <id>nexus</id> 
    <name>app-nexus-1</name>
-   <url>http://localhost:8082/repository/app-snapshot/ </url>
-  </snapshotRepository>
+   <url>http://localhost:8082/repository/app-snapshot/</url>
+  </snapshotRepository> 
+
+
  </distributionManagement>
 
   <build>

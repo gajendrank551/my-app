@@ -28,11 +28,5 @@ pipeline {
                 sh 'mvn package'
             }
         }   
-        stage('PUBLiSH-ARIFACTS'){
-            steps {
-                sh 'mvn deploy'
-            }
-        } 
-
     }
 }
