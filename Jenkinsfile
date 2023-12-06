@@ -28,5 +28,10 @@ pipeline {
                 sh 'mvn package'
             }
         }  
+        stage('archiveArtifacts') {
+            steps{
+                archiveArtifacts artifacts: 'target/app.war', followSymlinks: false
+            }
+        } 
     }
 }
