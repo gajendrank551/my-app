@@ -22,7 +22,7 @@ triggers {
         }
         stage('BUILD') {
             steps {
-                sh 'mvn build'
+                sh 'mvn package'
             } 
         }
              
