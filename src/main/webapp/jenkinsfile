@@ -10,28 +10,22 @@ triggers {
                  git branch: 'main' , url: 'https://github.com/gajendrank551/my-app.git' 
             }
         }
-        stages {
-            stage('CLEAN') {
-                steps {
-                    sh 'mvn clean'
-                } 
-            }
-            stages {
-            stage('TEST') {
-                steps {
-                    sh 'mvn test'
-                } 
-            }
-            stages {
-            stage('BUILD') {
-                steps {
-                    sh 'mvn build'
-                } 
-            }
-            stages {
-            stage('archiveArtifacts') {
-                steps {
-                    archive archiveArtifacts: 'target/app.war' followSymlinks: false
-'               } 
-            }
+        stage('CLEAN') {
+            steps {
+                sh 'mvn clean'
+            } 
+        }
+        stage('TEST') {
+            steps {
+                sh 'mvn test'
+            } 
+        }
+        stage('BUILD') {
+            steps {
+                sh 'mvn build'
+            } 
+        }
+             
+    } 
+}
 
