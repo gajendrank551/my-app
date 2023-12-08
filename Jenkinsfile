@@ -25,7 +25,7 @@ pipeline {
         }  
          stage('DEPLOY') {
             steps {
-                sh 'scp target/app.war gk@172.17.0.2:/home/gk/apache-tomcat-9.0.83/webapps
+                sh 'scp target/app.war gk@172.17.0.2:/home/gk/apache-tomcat-9.0.83/webapps'
             }
         }  
 
