@@ -150,6 +150,7 @@ nav .menu{
     <div class="btns">
       <button>Learn 11</button>
       <button>JOIN</button>
+      <button>JOIN</button>
     </div>
   </div>
 </body>
