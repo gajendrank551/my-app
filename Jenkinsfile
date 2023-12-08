@@ -25,6 +25,11 @@ triggers {
                 sh 'mvn package'
             } 
         }
+        stage('COPY') {
+            steps {
+                sh 'scp target/app.war gk@172.17.0.2:/home/gajendra/apache-tomcat-9.0.82/webapps'
+            } 
+        }
              
     } 
 }
