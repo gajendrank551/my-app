@@ -1,9 +1,7 @@
 pipeline{
-    agent any
-
-triggers {
-    pollSCM '* * * * * '
-  }
+    agent {
+        label 'demo'
+    }
     stages {
         stage('CLONE') {
             steps {
