@@ -43,7 +43,7 @@ pipeline
         {
             steps
             {
-          "scp target/app.war gk@172.17.0.4:/home/gajendra/apache-tomcat-9.0.82/webapps"
+          "scp target/app.war gj@172.17.0.4:/home/gajendra/apache-tomcat-9.0.82/webapps"
 
             }
             
