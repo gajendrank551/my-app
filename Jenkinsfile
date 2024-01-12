@@ -1,7 +1,6 @@
 pipeline
 {
-    agent{ label 'demo' 
-    }
+    agent any
     stages
     {
         stage("clone")
@@ -43,11 +42,21 @@ pipeline
         {
             steps
             {
-                sh "scp target/app.war gj@172.17.0.4:/home/gj/apache-tomcat-9.0.83/webapps"
+                sh "scp target/app.war gj@172.17.0.2:/home/gk/apache-tomcat-9.0.83/webapps"
 
             }
             
         }
+        stage()
+        {
+            steps
+            {
+                
+
+            }
+            
+        }
+
     }
 }
 
