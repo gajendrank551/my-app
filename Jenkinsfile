@@ -27,15 +27,7 @@ pipeline {
         stage('BUILD') {
             steps {
                 sh 'mvn package'
-            } 
-            post {
-                success {
-                    echo "ArchiveArtifacts" 
-                    archiveArtifacts artifacts: 'target/app.war', followSymlinks: false 
-
-                }
-
-            }
+            }  
         } 
         stage('DOCKER IMAGE') {
             steps {
