@@ -34,6 +34,16 @@ pipeline {
                 sh 'docker build -t gaja070/app:${BUILD_NUMBER} .  '
             }  
         }  
+        stage('docker push') {
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'docker')]) {
+                        sh 'docker login -u gaja070 -p ${docker}'
+                } 
+                sh 'docker push gaja070/app:${BUILD_NUMBER}'
+            } 
+        }
+    }
     }
     
     
