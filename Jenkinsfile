@@ -42,7 +42,10 @@ pipeline {
                 sh 'docker build -t gaja070/app:${BUILD_NUMBER} .  '
             }  
         }  
-        
+    }
+    
+    
+}
 
 } 
 }
