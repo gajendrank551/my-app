@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('CLONE') {
             steps {
-                git branch: 'main', url: 'https://github.com/08dilipkumar/my-app.git'
+                git branch: 'main', url: 'https://github.com/gajendrank551/my-app.git'
             } 
         }
         stage('CLEAN') {
@@ -39,26 +39,10 @@ pipeline {
         } 
         stage('DOCKER IMAGE') {
             steps {
-                sh 'docker build -t 07dilip/app:${BUILD_NUMBER} .  '
+                sh 'docker build -t gaja070/app:${BUILD_NUMBER} .  '
             }  
         }  
-        stage('docker push') {
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'myapp', variable: 'docker')]) {
-                        script{
-                            sh 'docker login -u 07dilip -p ${docker}'
-                        } 
-                } 
-                sh 'docker push 07dilip/app:${BUILD_NUMBER}'
-            } 
-        }
-    }  
-    stage('DEPLOY-K8s'){
-        steps{
-            sh 'helm install my-app-release app-0.1.0.tgz'
-        }
-    }
+        
 
 } 
 }
